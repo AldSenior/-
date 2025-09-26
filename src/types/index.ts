@@ -5,6 +5,7 @@ export interface Book {
   price: number;
   date?: string;
   tags: string[];
+  description: string;
 }
 
 export interface BooksData {

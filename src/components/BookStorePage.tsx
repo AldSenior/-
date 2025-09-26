@@ -1,14 +1,13 @@
-// src/components/BookStorePage.tsx
 import React, { useCallback } from "react";
 import { useBookStore } from "../hooks/useBookStore";
 import SortControls from "./SortControls";
 import FilterTags from "./FilterTags";
 import BookList from "./BookList";
+import type { SortField } from "../types";
 
 const BookStorePage: React.FC = () => {
   const {
     books,
-    allBooks,
     availableTags,
     selectedTags,
     sortConfig,
@@ -17,12 +16,13 @@ const BookStorePage: React.FC = () => {
     clearTags,
     changeSort,
     toggleTagMenu,
-    closeTagMenu,
     counts,
   } = useBookStore();
 
-  // onSortChange wrapper
-  const onSortChange = useCallback((field) => changeSort(field), [changeSort]);
+  const onSortChange = useCallback(
+    (field: SortField) => changeSort(field),
+    [changeSort],
+  );
 
   return (
     <main className="container">
@@ -36,8 +36,8 @@ const BookStorePage: React.FC = () => {
             selectedTags={selectedTags}
             isOpen={isTagMenuOpen}
             onToggleMenu={toggleTagMenu}
-            onClearFilters={clearTags}
             onTagToggle={toggleTag}
+            onClearFilters={clearTags}
           />
         </div>
       </header>

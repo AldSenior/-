@@ -1,4 +1,3 @@
-// src/components/FilterTags.tsx
 import React, { memo, useRef } from "react";
 import type { FilterTagsProps } from "../types";
 import { useClickOutside } from "../hooks/useClickOutside";
@@ -11,11 +10,12 @@ const FilterTags: React.FC<FilterTagsProps> = ({
   onTagToggle,
   onClearFilters,
 }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+
   useClickOutside(
-    ref,
+    ref as React.RefObject<HTMLElement>,
     () => {
-      if (isOpen) onToggleMenu(); // закрываем меню при клике вне
+      if (isOpen) onToggleMenu();
     },
     isOpen,
   );

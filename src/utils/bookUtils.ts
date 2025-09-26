@@ -1,4 +1,5 @@
-// src/utils/bookUtils.ts
+import type { Book, SortField, SortConfig } from "../types";
+
 export const STORAGE_KEY = "bookstore_selected_tags";
 
 export const getStoredTags = (): string[] => {
@@ -34,7 +35,7 @@ export const validateBook = (book: Book): boolean => {
     "tags",
     "description",
     "illustrator",
-    "date", // теперь date обязателен
+    "date",
   ];
 
   const missingFields = requiredFields.filter((field) => {
